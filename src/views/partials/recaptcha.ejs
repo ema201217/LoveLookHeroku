@@ -1,0 +1,14 @@
+<script>
+    function onSubmit(token) {
+      document.getElementById("form").submit();
+    }
+    var onloadCallback = function () {
+      grecaptcha.render("ReCaptcha", {
+        "sitekey": "6Lf31UAcAAAAABrw2DUMZXzCldUObT0L4lEoBJcP",
+        "theme": Number(localStorage.getItem("mode")) % 2 != 0 ? "dark" : "light",
+        "size": window.matchMedia("(max-width:540px)").matches
+          ? "compact"
+          : "normal",
+      });
+    };
+  </script>

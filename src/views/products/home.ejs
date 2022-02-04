@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head.ejs') %>
+
+  <body class="container-body">
+    <%- include('../partials/load.ejs') %> 
+   
+    
+   
+
+    <%-include('../partials/header.ejs')%>
+
+    <main class="home-inicio">
+      
+      <!-- CAROUSEL -->
+      <%- include('../partials/carousel.ejs') %>
+
+      <!-- END CAROUSEL -->
+      <div class="marqueeContainer" id="SL">
+        <marquee behavior="" direction="" SCROLLAMOUNT=10>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+        </marquee>
+      </div>
+
+      <h1><%= title %></h1>
+
+      <%- include ('../partials/slider.ejs') %>
+
+      <div class="categoryContainer">
+        <div class="cajaPrincipal">
+          <a href="/products/8" class="imagen1">
+            <img src="/img/photos/1638330935118_img_1638317348275_img_jean7.jpg_.jpg_.jpg" alt="" />
+            <h2>JEANS</h2>
+          </a>
+          <a href="/products/3" class="imagen1">
+            <img src="/img/photos/stitch3.jpg" alt="" />
+            <h2>REMERONES</h2>
+          </a>
+        </div>
+        <div class="cajaPrincipal">
+          <a href="/products/2" class="imagen1"
+            ><video src="/img/video1.mp4" autoplay muted loop ></video>
+              <h2>REMERAS</h2>
+          </a>
+          <a href="/products/1" class="imagen1"
+            ><video src="/img/video2.mp4" autoplay muted loop></video>
+              <h2>BUZOS</h2>
+          </a>
+          
+        </div>
+
+      </div>
+      
+      <div class="marqueeContainer">
+        <marquee behavior="" direction="" SCROLLAMOUNT=10>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+          <span class="marqueeTitle">♡ LOVE LOOK ♡</span>
+        </marquee>
+      </div>
+
+     
+
+    </main>
+    <!--Final de videos-->
+    <%- include('../partials/whatsapp.ejs') %>
+    <%-include('../partials/footer.ejs') %>
+     <%-include('../partials/scripts.ejs') %>
+     <script src="/js/carousel.js"></script>
+     <script src="/js/slider.js"></script>
+     
+  </body>
+</html>

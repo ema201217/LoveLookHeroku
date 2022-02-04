@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('../partials/head.ejs') %>
+
+  <body>
+    <%- include('../partials/load.ejs') %>
+    <%- include('../partials/header.ejs')%>
+
+    <div class="register">
+        <form id="Registro" action="/user/register" method="POST" class="card modal-content-register" >
+            <figure class="card__thumbnail">
+                <img src="/img/logo.png" alt="" class="card__logo">
+            </figure>
+            <div class="input-container">
+                <input  class="input--style" id="Nombre" type="text" name="firstName" placeholder="Nombre" value="<%= locals.old && old.firstName %>">
+                <% if (locals.errors && errors.firstName) { %>
+            <small class="text-danger"><%= errors.firstName.msg %> </small>
+            <% } %>
+                <small class="register-validation" id="errorfirstName" class="text-danger"></small>
+
+                <input class="input--style" id="Apellido" type="text" name="lastName" placeholder="Apellido" value="<%= locals.old && old.lastName %>">
+                <% if (locals.errors && errors.lastName) { %>
+                    <small class="text-danger"><%= errors.lastName.msg %> </small>
+                <% } %>
+                <small class="register-validation" id="errorlastName" class="text-danger"></small>
+                
+                <input class="input--style" id="Email" name="email" placeholder="Email"value="<%= locals.old && old.email %>">
+                <% if (locals.errors && errors.email) { %>
+                    <small class="text-danger"><%= errors.email.msg %> </small>
+                <% } %>
+                <small class="register-validation" id="errorEmail" class="text-danger"></small>
+                
+                <input class="input--style" id="Password" type="password" name="password" placeholder="Contraseña">
+                <% if (locals.errors && errors.password) { %>
+                    <small class="text-danger"><%= errors.password.msg %> </small>
+                <% } %>
+                <small class="register-validation" id="errorPassword" class="text-danger"></small>
+                
+                <input class="input--style" type="password" id="Password2" name="pass2" placeholder="Confirmar contraseña" >
+                <% if (locals.errors && errors.password2) { %>
+                    <small class="text-danger"><%= errors.password2.msg %> </small>
+                <% } %>
+                <small class="register-validation" id="errorPassword2" class="text-danger"></small>
+
+               
+                
+            </div>
+            <div class="conditions">
+    
+                <input class="input__check" id="terms" type="checkbox"  name="condiciones">
+                <label class="check__label" for="condiciones">Aceptar <a href="/info/we#Terminos"
+                        class="link-conditions">Términos y condiciones</a></label>
+                    </div>
+                    <% if (locals.errors && errors.condiciones) { %> 
+                        <small class="errors-validation_register"><%= errors.condiciones.msg %></small>
+                    <% } %>
+                    <small class="register-validation" id="errorTerms" class="text-danger"></small>
+                    <small class="register-validation" id="errorForm" class="text-danger"></small>
+            <button class="button btn-register"  type="submit" value="Registrar">Registrar</button>
+            <a href="/user/login" class="haveAccount shadow p-1 rounded-3 bg-white">Ya tengo cuenta</a>
+        </form>
+        
+    </div>
+
+    <%- include('../partials/footer.ejs') %> 
+    <%- include('../partials/whatsapp.ejs') %> 
+    <%- include('../partials/scripts.ejs') %> 
+    <script src="/js/registerValidation.js"></script> 
+</body>
+
+</html>

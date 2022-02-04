@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%-include('../partials/headAdmin.ejs') %>
+    <body>
+        <%- include('../partials/load.ejs') %>
+        <%- include('../partials/headerAdmin.ejs') %>
+            <main class="admin">
+                <h2 class="mt-4 text-center">Mensajes</h2>
+                <div class="table-container">
+                    <table class="table table-striped">
+                        <div class="icons-guie-scroll">
+                            <div class="icon-touch">
+                                <span class="iconify" data-icon="carbon:touch-interaction">
+                                </span>
+                            </div>
+                            <div class="icon-right-table">
+                                <span class="iconify" data-icon="akar-icons:arrow-right">
+                                </span>
+                            </div>
+                        </div>
+                        <tr>
+                            <th scope="col">Asunto</th>
+                            <th scope="col">Mensaje</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">DNI</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Curriculum</th>
+                            <th scope="col">Provincia</th>
+                            <th scope="col">Localidad</th>
+                            <th scope="col">Dirección</th>
+                            <th scope="col">CUIT</th>
+                            <th scope="col">Razon social</th>
+                            <th scope="col">Dirección social</th>
+                            <th scope="col">Eliminar</th>
+                        </tr>
+                        <% messages.forEach(message=>{ %>
+                            <tr id="<%= message.id %>">
+                    
+                                <td>
+                                    <%= message.issue%>
+                                     
+                                </td>
+                                <td>
+                                    <%= message.msg%>
+                                       
+                                </td>
+                                <td>
+                                    <%= message.name%>
+                                        
+                                </td>
+                                <td>
+                                    <%= message.lastName%>
+                                        
+                                </td>
+                                <td>
+                                    <%= message.dni%>
+                                        
+                                </td>
+                                <td>
+                                    <%= message.email%>
+                                        
+                                </td>
+                                <td>
+                                    <%= message.phone%>
+                                       
+                                </td>
+                                
+                                <td>
+                                    <a class="img-value" href="/CV/<%=message.cv%>" target="_blank" style="color:blue;margin-top: 20px"><%=message.cv%></a>
+                                </td>
+                                <td>
+                                    <%= message.province %>
+                                       
+                                </td>
+                                <td>
+                                    <%= message.location %>
+                                      
+                                </td>
+                                <td>
+                                    <%= message.address %>
+                                        
+                                </td>
+                                <td>
+                                    <%= message.cuit %>
+                                       
+                                </td>
+                                <td>
+                                    <%= message.businessName%>
+                                       
+                                </td>
+                                <td>
+                                    <%= message.socialLocation%>
+                                       
+                                </td>
+                                <td>
+                                    <form action="/admin/messages/delete/<%= message.id %>?_method=DELETE"
+                                        method="POST">
+                                        
+                                        <button class="delete" type="submit">
+                                            <span class="iconify" data-icon="feather:delete">
+                                            </span>
+                                        </button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </table>
+                    <a id="endPage"><i class="fas fa-arrow-down"></i></a>
+            </main>
+
+    </body>
+
+</html>

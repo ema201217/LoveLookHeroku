@@ -1,0 +1,139 @@
+/* DARK MODE */
+
+.perfil-user .input-perfil-user-border.dark {
+  color: darkgray;
+}
+
+.perfil-user .input-perfil-user.dark {
+  background-color: transparent;
+
+  color: white;
+
+  font-weight: bold;
+}
+
+/* DARK MODE end */
+
+.perfil-user {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 50px 0;
+}
+
+.perfil-user .input-perfil-user {
+  width: 290px;
+  height: 39px;
+  border: 2px solid var(--bordes);
+  padding-left: 10px;
+  border-radius: 20px;
+}
+
+.perfil-user .input-perfil-user-border {
+  width: 290px;
+  height: 39px;
+  font-size: 1rem;
+  padding-left: 10px;
+  border-radius: 20px;
+}
+
+.perfil-user .label-perfil-user {
+  font-size: 1.2rem;
+  display: block;
+}
+
+.perfil-user .image-view {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 4px var(--bordes_claro);
+}
+
+.perfil-user .container {
+  width: fit-content;
+  margin: auto;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.perfil-user .image-container {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto 36px auto;
+}
+
+.perfil-user .img-label {
+  position: absolute;
+  right: -5px;
+  bottom: 13px;
+  color: var(--bordes_claro);
+  font-size: 3rem;
+}
+.perfil-user .img-label:active {
+  color: var(--bordes);
+}
+
+.btn-info {
+  background-color: green !important;
+  border-color: green !important;
+}
+
+.btn-secondary {
+  background-color: red !important;
+  border-color: red !important;
+}
+
+small {
+  bottom: 0;
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .perfil-user .label-perfil-user {
+    font-size: 1rem;
+  }
+
+  .perfil-user .img-label {
+    font-size: 2.3rem;
+    bottom: 32px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .perfil-user .input-perfil-user {
+    width: 250px;
+    height: 41px;
+    background: white;
+  }
+
+  .perfil-user .input-perfil-user-border {
+    width: 250px;
+    height: 41px;
+    /* background: white; */
+    border-radius: 20px;
+  }
+
+  .perfil-user .label-perfil-user {
+    display: inline;
+  }
+
+  .perfil-user .image-view {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .perfil-user .container {
+    width: 409px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .perfil-user .img-label {
+    font-size: 2.5rem;
+
+    right: -7px;
+  }
+}

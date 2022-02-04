@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head.ejs') %>
+
+<body>
+  <%- include('../partials/load.ejs') %>
+  <%-include('../partials/header.ejs')%>
+
+  <main class="container-listProduct">
+
+    
+    <section class="section1" style=<%= display %>>
+      <span class="iconify iconFilter" id="filter" data-icon="mi:filter" data-inline="false"><button></button></span>
+
+
+      <div class="nav-bar" id="navBar">
+        <input class="filted" type="submit" id="filterProducts" value="FILTRAR">
+
+        <select class="dropdown" type="text" name="color" id="colorSelect" placeholder="Color" title="Color">
+          <option value="" selected hidden>COLOR</option>
+          <% colors.forEach(color => { %>
+          <option value="<%- color.name %>"><%- color.name.toUpperCase() %></option>
+          <% }) %>
+        </select>
+
+        <select class="dropdown" name="size" id="sizeSelect" title="Talle">
+          <option value="" selected hidden>TALLE</option>
+          <% sizes.forEach(size => { %>
+          <option value="<%- size.name %>"><%- size.name %></option>
+          <% }) %>
+        </select>
+
+        <select class="dropdown" name="price" id="priceSelect" title="price">
+          <option value="" selected hidden>PRECIO</option>
+
+
+
+          <% prices.forEach(price => { %>
+          <option value="<%- price %>"><%- price %></option>
+          <% }) %>
+        </select>
+      </div>
+    </section>
+    <hr>
+    <%- include('../partials/cardProduct.ejs') %> 
+  </main>
+  
+
+  
+  <%- include('../partials/footer.ejs') %>
+  <%-include('../partials/scripts.ejs') %>
+  <%-include('../partials/whatsapp.ejs') %>
+  <script src="/js/listProductFilter.js" defer></script>
+</body>
+
+</html>

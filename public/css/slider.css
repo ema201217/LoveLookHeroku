@@ -1,0 +1,163 @@
+
+/* DARK MODE */
+
+.slick-slide.dark {background-color: floralwhite;color: black;}
+/* DARK MODE END*/
+
+.slick-slide {
+    height: 320px !important;
+    position: relative;
+    box-shadow: 0 5px 10px var(--bordes_claro);
+    margin: 15px 10px;
+    border-radius: 5%;
+    background-color: white;
+    /* max-width: 250px; */
+}
+.slick-dotted.slick-slider{
+    width: 60%;
+    margin: auto;
+}
+.slick-track{
+    display: flex !important;
+}
+
+.slick-next, .slick-prev {
+    width: 40px !important;
+    height:40px !important;
+    border-radius: 50% !important;
+    z-index: 1;
+    color: white !important;
+    text-shadow: 0px 0px 15px var(--bordes) !important;
+}
+
+.slick-next:before, .slick-prev:before {
+    color: white !important;
+    font-size: 2.5rem !important;
+    line-height: 110% !important;
+}
+.slick-dots {
+    position: relative !important;
+    bottom: 0 !important;
+    display: none !important;
+}
+
+.card-img-top {
+    width: 100%;
+    padding: 5px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+    object-position: top;
+}
+
+.card-body {
+    text-align: center;
+}
+.card-body .fas , .card-body .far{
+ font-size: 1.3em;
+}
+.card-body div.clientAction{
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--fondo);
+    padding-top: 5px;
+    border-radius: 0 0 5px 5px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.nameSlider {
+    font-family: 'Poppins';
+    font-size: 1.4rem;
+    margin: 2px;
+    margin: auto;
+    border-top: 2px solid lightpink;
+}
+
+.card-text {
+    font-family: 'Poppins';
+    font-size: 110%;
+    padding: 2px;
+    margin: auto;
+}
+
+span.btn-primary,a.btn-primary {
+    color: black;
+    padding: 5px;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    width: 50px;
+    border: 1px;
+    /* background-color: honeydew; */
+}
+
+span.btn-primary:hover{
+    filter: invert(1);
+}
+
+.slick-list.draggable {
+    width: 100%;
+    margin: auto;
+}
+
+.discount {
+    font-size: 1rem;
+    line-height: 150%;
+    color: green;
+}
+
+.priceDiscount {
+    font-size: 0.8rem;
+    text-decoration: line-through;
+    color: red;
+}
+
+.priceSlider {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: black;
+}
+
+
+
+@media screen and (min-width: 543px) {
+    .slick-dotted.slick-slider{
+    width: 80%;
+}
+}
+@media screen and (min-width: 768px) {
+
+    .slick-slide {
+        width: 180px !important;
+        border-radius: 3%;
+    }
+
+    .card-text {
+        font-size: 1.2rem;
+    }
+
+    .card-slider {
+    width: 80%;
+    margin: auto;
+    }
+    .slick-dotted.slick-slider{
+       
+width: 70%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .slick-dotted.slick-slider{
+      
+width: 90%;
+    }
+    
+     .card-slider {
+        width:750px;
+   } 
+
+}

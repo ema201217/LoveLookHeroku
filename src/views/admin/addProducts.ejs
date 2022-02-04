@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <%-include('../partials/headAdmin.ejs') %>
+
+<body>
+    <%- include('../partials/load.ejs') %>
+    <%- include('../partials/headerAdmin.ejs') %>
+    <main class="admin">
+        <h2 class="mt-4 text-center">Agregar un producto</h2>
+        <div class="container">
+            <form action="/admin/products/add" method="post" class="inputRows" enctype="multipart/form-data"
+                id="productForm">
+
+                <div class="preview-image-container">
+                    <label for="imgInp" class="btn btn-success"><i class="fas fa-cloud-upload-alt"></i>
+                        Subir imágenes
+                    </label>
+                    <input type='file' id="imgInp" name="image" aria-label="file example" hidden="hidden" multiple>
+                    <img class="preview-image" id="blah" src="https://via.placeholder.com/150" alt="Tu imagen" >
+                    <% if(locals.errors && errors.image){ %>
+                    <small class="error-validator">
+                        <%= errors.image.msg %>
+                    </small>
+                    <% } %>
+                    <small class="error-validator" id="errorFileUpload">
+                    </small>
+                </div>
+
+                <!-- INPUT NAME -->
+                <input type="text" name="name" value="<%= locals.old && old.name %>" id="name" placeholder="Nombre"
+                    title="nombre">
+                <% if(locals.errors && errors.name){ %>
+                <small class="error-validator">
+                    <%= errors.name.msg %>
+                </small>
+                <% } %>
+                <small class="error-validator" id="errorName">
+                </small>
+
+                <!-- TEXTAREA DESCRIPTION -->
+                <textarea type="text" name="description" id="description" placeholder="Descripción"
+                    title="Descripción"><%= locals.old && old.description  %></textarea>
+
+                <% if(locals.errors && errors.description){ %>
+                <small class="error-validator">
+                    <%= errors.description.msg %>
+                </small>
+                <% } %>
+                <small class="error-validator" id="errorDescription">
+                </small>
+
+                <!-- SELECT DE TEMPORADA -->
+                <div class="container-inserts">
+                    <select onchange="valueChange('deleteSeason',0)" name="season" id="season" title="temporada">
+                        <option value="" hidden selected>Temporada</option>
+                        <% seasons.forEach(season=> { %>
+                        <option id="seasonValue" value="<%- season.id %>" <%-locals.old && old.season==season.id ? `selected` : "" %>>
+                            <%- capitalize(season.name) %>
+                        </option>
+                        <% }) %>
+                    </select>
+                    <span class="btn btn-danger ml-10" id="DelSeason">
+                        <small class="fas fa-minus del"></small>
+                    </span>
+                </div>
+                <% if(locals.errors && errors.season){ %>
+                <small class="error-validator">
+                    <%= errors.season.msg %>
+                </small>
+                <% } %>
+                <small class="error-validator" id="errorSeason">
+                </small>
+
+                <!-- SELECT DE CATEGORÍA -->
+                <div class="container-inserts">
+                    <select name="category" id="category" title="category" onchange="valueChange('deleteCategory',1)">
+                        <option value="" hidden selected>Categoría</option>
+                        <% categories.forEach(category=> { %>
+                        <option value="<%= category.id %>" <%-locals.old && old.category==category.id ? `selected` : "" %>>
+                            <%= capitalize(category.name) %>
+                        </option>
+                        <% }) %>
+                    </select>
+                    <span type="menu" class="btn btn-danger" id="DelCategoty">
+                        <small class="fas fa-minus del"></small>
+                    </span>
+                </div>
+                <% if(locals.errors && errors.category){ %>
+                <small class="error-validator">
+                    <%= errors.category.msg %>
+                </small>
+                <% } %>
+                <small class="error-validator" id="errorCategory">
+                </small>
+
+
+
+                <!-- INPUT DISCOUNT -->
+                <input type="number" name="discount" id="discount" placeholder="Descuento %" title="Descuento"
+                    value="<%= locals.old && old.discount %>">
+
+                <!-- INPUT PRICE -->
+                <input type="number" name="price" id="price" placeholder="Precio" title="Precio"
+                    value="<%= locals.old && old.price %>">
+                <% if(locals.errors && errors.price){ %>
+                <small class="error-validator">
+                    <%= errors.price.msg %>
+                </small>
+                <% } %>
+                <small class="error-validator" id="errorPrice">
+                </small>
+
+                <!-- SELECT DE COLOR -->
+                <div class="container-inserts">
+                    <select name="color" id="color" title="color" class="form-control fa"
+                        onchange="valueChange('deleteColor',2)">
+                        <option value="" hidden selected>Color</option>
+                        <% colors.forEach(color=> { %>
+                        <option class="fa" value="<%= color.id %>" <%=locals.old && old.color==color.id ? "selected" : "" %>><%= capitalize(color.name) %>
+                        </option>
+                        <% }) %>
+                    </select>
+                    <span type="menu" class="btn btn-danger" id="DelColor">
+                        <small class="fas fa-minus del"></small>
+                    </span>
+                </div>
+                <% if(locals.errors && errors.color){ %>
+                <small class="error-validator">
+                    <%= errors.color.msg %>
+                </small>
+                <% } %>
+                <small class="error-validator" id="errorColor">
+                </small>
+
+                <!-- SELECT DE TALLE -->
+                <select name="size" id="size" title="Talle">
+                    <option value="" hidden selected>Talle</option>
+                    <% sizes.forEach(size=> { %>
+                    <option value="<%- size.id %>" <%=locals.old && old.size==size.id ? "selected" : "" %>>
+                        <%- size.name.toUpperCase() %>
+                    </option>
+                    <% }) %>
+                </select>
+                <% if(locals.errors && errors.size){ %>
+                <small class="error-validator">
+                    <%= errors.size.msg %>
+                </small>
+                <% } %>
+                <small class="error-validator" id="errorSize">
+                </small>
+
+                <!-- INPUT STOCK/CANTIDAD -->
+                <input type="number" name="amount" id="stock" placeholder="Cantidad" title="Stock"
+                    value="<%= locals.old && old.amount %>">
+                <% if(locals.errors && errors.amount){ %>
+                <small class="error-validator">
+                    <%= errors.amount.msg %>
+                </small>
+                <% } %>
+                <small class="error-validator" id="errorStock">
+                </small>
+                
+
+                <div class="button-container">
+                    <button type="reset" class="btn btn-danger"><span class="iconify" data-icon="whh:broom"></span></button>
+                    <button type="submit" class="btn btn-success"><span class="iconify"
+                            data-icon="fluent:add-12-filled"></span></button>
+                </div>
+
+                <a href="/admin/products" class="btn btn-secondary mt-4 w-100"><span class="iconify f-2"
+                        data-icon="bi:arrow-left-square"></span></a>
+                <small class="error-validator" id="errorAddProductForm">
+                </small>
+                
+            </form>
+            <div class="form-secondary">
+                <form action="/admin/products/addSeason" method="post" id="formAddSeason">
+                    <div class="container-addOption">
+                        <input type="text" name="seasonInsert" placeholder="Agregar temporada... "
+                            class="input-addOption" id="seasonInsert">
+                        <button class="btn btn-success" type="submit">
+                            <span class="iconify " data-icon="ant-design:appstore-add-outlined"></span>
+                        </button>
+                    </div>
+                    <% if(locals.errors && errors.seasonInsert){ %>
+                    <small class="error-validator">
+                        <%= errors.seasonInsert.msg %>
+                    </small>
+                    <% } %>
+                    <small class="error-validator" id="errorSeasonInsert">
+                    </small>
+                </form>
+                <form action="/admin/products/addCategory" method="post" id="formAddCategory">
+                    <div class="container-addOption">
+                        <input type="text" name="categoryInsert" placeholder="Agregar categoria... "
+                            class="input-addOption" id="categoryInsert">
+                        <button class="btn btn-success" type="submit">
+                            <span class="iconify " data-icon="ant-design:appstore-add-outlined"></span>
+                        </button>
+                    </div>
+                    <% if(locals.errors && errors.categoryInsert){ %>
+                    <small class="error-validator">
+                        <%= errors.categoryInsert.msg %>
+                    </small>
+                    <% } %>
+                    <small class="error-validator" id="errorCategoryInsert">
+                    </small>
+                </form>
+                <form action="/admin/products/addColor" method="post" id="formAddColor">
+                    <div class="container-addOption">
+                        <input type="text" name="colorInsert" placeholder="Agregar color... " class="input-addOption"
+                            id="colorInsert">
+                        <button class="btn btn-success" type="submit">
+                            <span class="iconify " data-icon="ant-design:appstore-add-outlined"></span>
+                        </button>
+                    </div>
+                    <% if(locals.errors && errors.colorInsert){ %>
+                    <small class="error-validator">
+                        <%= errors.colorInsert.msg %>
+                    </small>
+                    <% } %>
+                    <small class="error-validator" id="errorcolorInsert">
+                    </small>
+                </form>
+            </div>
+            <form id="formDelSeason" method="post" style="display: none;" class="formDelete">
+                <p style="text-align: center;">Esta seguro de eliminar esta información</p>
+                <button type="submit" class="btn-windowDel">Aceptar
+                </button>
+                <span style="color: black;box-shadow: none;width:50%;" onclick="closeWindowDel()">Cancelar</span>
+            </form>
+            <div class="windowGeneral" onclick="closeWindowDel2()"></div>
+
+
+        </div>
+
+    </main>
+    <a id="endPage"><i class="fas fa-arrow-down"></i></a>
+    <script src="/js/addProductValidator.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="/js/previewImg.js"></script>
+</body>
+</html>

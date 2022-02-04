@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <%- include('./partials/load.ejs') %>
+                <%- include('./partials/header.ejs')%>
+
+                    <main class="container-error-404">
+                        <h2 class="error-title">La pagina solicitada no existe</h2>
+                        <div class="container-img">
+                            <a href="/" class="container-logo-error404">
+                                <div class="error-img">
+                                    <img src="\img\404.png" alt="">
+                                </div>
+                                <div class="error-logo">
+                                    <img style="opacity: 0.7;" src="/img/logo.png" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        
+                    </main>
+
+                    <%- include('./partials/footer.ejs') %>
+                        <%- include('./partials/scripts.ejs') %>
+
+    </body>
+
+</html>

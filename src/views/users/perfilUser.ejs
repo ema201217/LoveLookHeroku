@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head.ejs') %>
+
+  <body>
+    <%- include('../partials/load.ejs') %> <%- include('../partials/header.ejs')
+    %>
+
+    <form action="" class="perfil-user">
+      <div class="image-container">
+        <input
+          class="input-perfil-user"
+          type="file"
+          name="avatar"
+          id="examinar"
+          hidden
+        />
+
+        <img class="image-view" <%= /http/.test(user.avatar)
+        ?`src=${user.avatar}` :`src=/img/user/userAvatars/${user.avatar}` %>
+        alt="">
+      </div>
+
+      <div class="container">
+        <label class="label-perfil-user" for="nombre">Nombre: </label>
+        <input
+          class="input--style input-perfil-user-border"
+          type="text"
+          name="nombre"
+          id="nombre"
+          value="<%= user.firstName%>"
+          disabled
+        />
+      </div>
+
+      <div class="container">
+        <label class="label-perfil-user" for="apellido">Apellido: </label>
+        <input
+          class="input--style input-perfil-user-border"
+          type="text"
+          name="apellido"
+          id="apellido"
+          value="<%= user.lastName %>"
+          disabled
+        />
+      </div>
+
+      <div class="container">
+        <label class="label-perfil-user" for="email">Email: </label>
+        <input
+          class="input--style input-perfil-user-border"
+          type="email"
+          name="email"
+          id="email"
+          value="<%= user.email %>"
+          disabled
+        />
+      </div>
+
+      <div class="container">
+        <label class="label-perfil-user" for="telefono">Teléfono: </label>
+        <input class="input--style input-perfil-user-border" type="tel"
+        name="telefono" id="telefono" value="<%= user.phone ? user.phone : ""
+        %>" disabled>
+      </div>
+
+      <div class="container">
+        <label class="label-perfil-user" for="direccion">Dirección: </label>
+        <input class=" input--style input-perfil-user-border" type="text"
+        name="direccion" id="direccion" value="<%= user.location ?
+        user.location[0].address : "" %>" disabled>
+      </div>
+
+      <div class="container">
+        <label class="label-perfil-user" for="city">Ciudad: </label>
+        <input class=" input--style input-perfil-user-border" type="text"
+        name="city" id="city" value="<%= user.location ? user.location[0].city :
+        "" %>" disabled>
+      </div>
+
+      <div class="container">
+        <label class="label-perfil-user" for="cp">Codigo Postal: </label>
+        <input class=" input--style input-perfil-user-border" type="number"
+        name="cp" id="cp" value="<%= user.location ? user.location[0].pc : ""
+        %>" disabled>
+      </div>
+
+      <div class="container">
+        <label class="label-perfil-user" for="province">Provincia: </label>
+        <input class=" input--style input-perfil-user-border" type="text"
+        name="province" id="province" value="<%= user.location ?
+        user.location[0].province : "" %>" disabled>
+      </div>
+      <a
+        href="/user/profile/edit/<%= user.id %>"
+        class="changesButton btn btn-info m-auto mt-2"
+        >EDITAR DATOS</a
+      > 
+      </div>
+      <div class="m-auto mt-2">
+        <label for="bad-btn-submit" class="btn btn-danger deleteUser"
+          >ELIMINAR MI CUENTA</label
+        >
+      </div>
+    </form>
+
+    <form
+      id="formDelete"
+      action="/user/perfil/delete/<%= user.id%>?_method=DELETE"
+      method="POST"
+    >
+      <button id="bad-btn-submit" class="deleteUser" style="display: none" type="submit"></button>
+    </form>
+    <%- include('../partials/whatsapp.ejs') %> <%-
+    include('../partials/footer.ejs') %> <%- include('../partials/scripts.ejs')
+    %>
+
+    <script src="/js/perfilUser.js"></script>
+    <script src="/js/deleteProfile.js"></script>
+  </body>
+</html>

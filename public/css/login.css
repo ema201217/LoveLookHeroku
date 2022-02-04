@@ -1,0 +1,236 @@
+/* Dark Mode */
+
+.login .google.dark {
+  /* transition: all 1s ease; */
+}
+.login .google.dark:hover {
+  box-shadow: inset 0 0 10px 2px darkblue, 0 0 10px darkgray;
+  transition: all 1s ease;
+  background-color: black;
+  color: white;
+}
+
+.fb-login-button:hover{
+    box-shadow: 0 0 5px black;
+    border-radius: 54px;
+}
+
+.login .card.dark,
+.register .card.dark {
+  background: linear-gradient(150deg, rgb(114 7 24), #958a8a, rgb(189 21 47));
+
+  background-size: 400% 300%;
+}
+
+.login .card__logo.dark,
+.register .card__logo.dark {
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 0 40px white, 0 0 20px lightgoldenrodyellow;
+}
+
+.login .card__input.dark {
+  background-color: lightgrey;
+
+  font-weight: 700;
+}
+
+.login .card__input.dark::placeholder {
+  color: gray;
+}
+
+.login .button.dark,
+.register .button.dark {
+  box-shadow: inset 0 0 100px #ad1a1a9e;
+  border: none;
+}
+.login .button:hover.dark,
+.register .button:hover.dark {
+  box-shadow: inset 0 0 0px var(--bordes);
+}
+
+/* Dark Mode end */
+
+.modal {
+  position: fixed;
+  z-index: 10000;
+  margin: 0 auto;
+  top: -1000px;
+  width: 100%;
+  height: 100vh;
+}
+.close {
+  position: absolute;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  top: 5px;
+  right: 10px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.login,
+.register {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto;
+  width: 100%;
+}
+.login .google img {
+  object-fit: contain;
+  width: auto;
+  margin: 0 5px 0 0;
+}
+
+.login .google:hover img {
+  animation: giro 1s 0.2s 1 ease-in;
+}
+
+.login .google {
+  padding: 6px 9px;
+  border-radius: 30px;
+  height: 28px;
+  box-shadow: 0px 0px 5px rgb(0 0 0 / 35%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  transition: all 1s ease;
+  width: 200px;
+}
+.login .google:hover {background-color: blue;box-shadow: 0 0 5px black;}
+.login .google:hover .fab{ animation: giro 1s 0.2s 1 ease-in;}
+
+.login .facebook{
+    width: 200px;
+    background-color: #2271ff;
+    color: white;
+    font-family: var(--poppins);
+    display: flex;
+    justify-content: space-around;
+    font-size: .8rem;
+    font-weight: 700;
+    align-items: center;
+    padding: 5px;
+    border-radius: 30px;
+    transition: 1s;
+}
+.login .facebook:hover{
+    box-shadow: 0 0 5px black;
+    transition: 1s;
+    background-color: #0a4dc5;
+}
+
+.login .card,
+.register .card {
+  background-color: white;
+  width: 300px;
+  box-shadow: 0 0 10px var(--bordes);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  border-radius: 10px;
+  background: linear-gradient(
+    150deg,
+    rgba(253, 180, 191, 1),
+    white,
+    rgba(253, 180, 191, 1)
+  );
+  background-size: 400% 300%;
+  animation: BgGradient 5s ease infinite;
+}
+
+.login .card__thumbnail,
+.register .card__thumbnail {
+  /* margin-bottom: 40px; */
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login .card__logo,
+.register .card__logo {
+  width: 100%;
+  animation: acercarAlejar 2s alternate infinite;
+}
+
+.login .card__input {
+  margin: 20px 0 0 0;
+  width: 70%;
+  height: 6%;
+}
+
+.login .card__text {
+  transition: all 750ms ease;
+}
+
+.login .card__text:hover {
+  text-shadow: 1px 1px 1px black;
+  color: lightblue;
+}
+
+.login .button:hover {
+  /* border          : 1px solid var(--shadows); */
+  /* transform       : scale(1.02); */
+  background-color: var(--fondo-claro);
+  box-shadow: inset 0 0px 0px var(--bordes);
+  /* color: white; */
+  transition: 1s;
+}
+
+.login .button--positionRegister {
+  bottom: 100px;
+}
+
+.login .button--positionIngresar {
+  bottom: 50px;
+}
+
+.login .email--absolute {
+  bottom: 268px;
+  left: 50px;
+}
+
+.login .contraseña--absolute {
+  bottom: 200px;
+  left: 50px;
+}
+
+.text-danger {
+  /* color: red; */
+}
+
+.login .error-validator {
+  color: red;
+}
+
+@media screen and (min-width: 768px) {
+  .login .button--positionRegister {
+    left: 50px;
+    bottom: 80px;
+  }
+
+  .login .button--positionIngresar {
+    right: 50px;
+    bottom: 80px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .login .card,
+  .register .card {
+    transform: none;
+  }
+}

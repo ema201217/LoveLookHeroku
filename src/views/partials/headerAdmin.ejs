@@ -1,0 +1,17 @@
+<div class="topnav">
+  <a class="text-dark" href="/">Home</a>
+  <a class="text-dark" href="/admin/products">Productos</a>
+  <a class="text-dark" href="/admin/messages">Mensajes</a>
+  <% if(session.user && session.user.rol === 3){ %>
+    <a class="text-dark" href="/admin/users">Usuarios</a>
+    <%}%>
+  
+  <div class="search-container">
+    <form action="/admin/products/search" method="GET">
+      <input type="text" placeholder="Buscar..." name="keys">
+      <button type="submit" class="bg-secondary">
+        <i class="fa fa-search text-white"></i>
+      </button>
+    </form>
+  </div>
+</div>

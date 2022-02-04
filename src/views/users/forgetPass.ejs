@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head.ejs') %>
+<body>
+    <%- include('../partials/header.ejs') %>
+
+     <form action="">
+        <div class="container">
+            <label class="label-perfil-user" for="email">Email: </label>
+            <input class="input--style input-perfil-user-border" type="email" name="email" id="email" value="<%= user.email %>" disabled>
+        </div>
+        <button class="button btn-register"  type="submit" value="Enviar">Enviar</button>
+     </form>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('../partials/head.ejs') %>
+
+    <body>
+        <!-- ReCaptcha -->
+        <%- include('../partials/recaptcha.ejs') %>
+        <!-- Loading -->
+        <%- include('../partials/load.ejs') %>
+        <!-- Header -->
+            <%- include('../partials/header.ejs') %>
+
+                <main class="form-contact-container">
+                    <form id="form" action="/info/contact/other" method="POST">
+<!-- NOMBRE -->
+                        <div class="form-item" id="nombre">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name="name" id="nombreInput" value=<%=locals.old && old.name %>>
+                            <% if(locals.errors && errors.name){ %>
+                                <span id="nombreError" class="error">
+                                    <%= errors.name.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="nombreError" class="error"></span>
+                                    <% } %>
+                        </div>
+                        <!-- APELLIDO -->
+                        <div class="form-item" id="apellido">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" name="lastName" id="apellidoInput" autocomplete="family-name"
+                                mozactionhint="siguiente" value=<%=locals.old && old.lastName %>>
+
+                            <% if(locals.errors && errors.lastName){ %>
+                                <span id="apellidoError" class="error">
+                                    <%= errors.lastName.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="apellidoError" class="error"></span>
+                                    <% } %>
+
+                        </div>
+
+                        <!-- EMAIL -->
+                        <div class="form-item" id="email">
+                            <label for="email">E-mail</label>
+                            <input type="text" name="email" id="emailInput" title="ejemplo@email.com"
+                                mozactionhint="siguiente" value=<%=locals.old && old.email %>>
+                            <% if(locals.errors && errors.email){ %>
+                                <span id="emailError" class="error">
+                                    <%= errors.email.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="emailError" class="error"></span>
+                                    <% } %>
+                        </div>
+                        <!-- MENSAJE -->
+                        <div class="form-item" id="mensaje">
+                            <label for="msg">Mensaje</label>
+                            <textarea rows="5" maxlength="97" title="97 caracteres máximo" name="msg" id="msgInput"
+                                placeholder="Hola !!" spellcheck="true"
+                                mozactionhint="siguiente"><%= locals.old && old.name %></textarea>
+
+                            <% if(locals.errors && errors.msg){ %>
+                                <span id="msgError" class="error">
+                                    <%= errors.msg.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="msgError" class="error"></span>
+                                    <% } %>
+
+                        </div>
+                        <%- include('../partials/reCaptView.ejs') %>
+
+                        <div class="form-item">
+                            <button class="btn-send" type="submit">Enviar</button>
+                        </div>
+                    </form>
+
+                </main>
+
+                <%- include('../partials/whatsapp.ejs') %>
+
+                    <%- include('../partials/footer.ejs') %>
+
+                         
+                    <%- include('../partials/scripts.ejs') %>   
+                    <script src="/js/validationContact.js"></script>
+
+    </body>
+
+</html>

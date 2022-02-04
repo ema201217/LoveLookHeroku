@@ -1,0 +1,181 @@
+<%- include('marqueeShipping.ejs') %>
+  <header class="header" style=<%=position%>
+    >
+    <!-- CARRITO HEADER -->
+    <div id="carrito" class="carritoHeader">
+      <div class="d-flex justify-content-around mb-2">
+        <div>
+          <button id="vaciar-carrito" class="btn btn-outline-danger vaciar-carrito">
+            Vaciar Carrito
+          </button>
+        </div>
+        <div>
+          <button id="viewCart" class="btn btn-outline-success">
+            Procesar Compra
+          </button>
+        </div>
+      </div>
+      <!-- Lista carrito -->
+      <table id="lista-carrito" class="listaCarritoHeader table">
+        <thead>
+          <tr class="table-danger">
+            <th>Imagen</th>
+            <th>Titulo</th>
+            <th>Precio</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- CARRITO HEADER END -->
+    <div class="carrito">
+      <a class="align-icon icon-size" href="" id="cart-popup-right">
+        <span class="iconify" data-icon="emojione-monotone:shopping-cart" data-inline="false"></span>
+        <% if (typeof session.user !="undefined" ) { %>
+          <span class="count" style="color: black; background-color: lightgreen"><span>0</span></span>
+          <%} else{ %>
+            <span class="count"><span>0</span></span>
+            <%}%>
+      </a>
+    </div>
+
+    <!-- LOGO -->
+    <a href="/" class="logo">
+      <img src="/img/logo.png" alt="" />
+    </a>
+    <!-- MENU HAMBURGUESA -->
+    <a class="menu icon-size align-icon McButton" data="hamburger-menu">
+      <b></b>
+      <b></b>
+      <b></b>
+    </a>
+    <!-- MODO OSCURO -->
+    <%- include('darkMode.ejs')%>
+
+
+    <!-- /////////////////////// -->
+    <!-- GOOGLE TRADUCTOR -->
+    <div class="translateSelect">
+      <i class="fas fa-globe-americas align-icon icon-size work"></i>
+    </div>
+    
+    <span id="google_translate_element" class="selectTranslate"></span>
+    <!-- /////////////////////// -->
+
+
+
+      <!-- DIV PARA CERRAR EL MENU -->
+      <div id="nav" class="navOut"></div>
+      <!-- MENU AL PRECIONAR EL HAMBURGUESA -->
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <!-- ICONO DE USUARIO MOBILE (circle) -->
+        <% if (typeof session.user !="undefined" ) { %>
+          <a href="/user/login" class="align-icon icon-size user-mobile">
+            <div class="avatarHeader">
+              <img <%=/http/.test(user.avatar) ?`src=${user.avatar}` :`src=/img/user/userAvatars/${user.avatar}` %>
+              alt="">
+            </div>
+          </a>
+          <%} else{ %>
+            <a href="/user/perfil" class="align-icon icon-size user-mobile">
+              <span class="iconify" data-icon="bi:person-circle" data-inline="false"></span>
+            </a>
+            <% } %>
+              <!-- MENU MOBILE -->
+              <ul>
+                <li class="btn"><a href="/">Inicio</a></li>
+                <li id="categorias_id" class="btn">
+                  <a id="categorias_dii">Categorías<i class="fas fa-angle-down" id="fa-angle-down"></i></a>
+
+                  <div id="category_m" class="menu_desplegable">
+                    <div class="desplegable">
+                      <% locals.categories.forEach(category=> { %>
+                        <a href="/products/<%= category.id %>"><i class="fas fa-angle-right"></i><span>
+                            <%= category.name %>
+                          </span></a>
+                        <% }); %>
+                    </div>
+                  </div>
+                </li>
+                <li class="btn"><a href="/products/12">Accesorios</a></li>
+                <li class="btn"><a href="/products">Todos los productos</a></li>
+              </ul>
+              <% if (typeof session.user !="undefined" ) { %>
+                <div class="menu-mobile">
+                  <a href="/user/perfil">Mis datos</a>
+                  <% if (session.user.rol == 2 || session.user.rol == 3) { %>
+                        <a href="/admin/products">ADMIN</a>
+                        <% } %>
+
+                      <a href="/user/logout" id="logout"><i class="fas fa-sign-out"></i></a>
+                </div>
+                <% } %>
+      </div>
+      <!-- ICONO DE LUPA  -->
+      <a class="icon-size align-icon lupa" id="search-ico" onclick="openBarSearch(this)">
+        <span class="iconify" id="search" data-icon="akar-icons:search" data-inline="false"></span>
+      </a>
+
+      <% if (typeof session.user !="undefined" ) { %>
+
+        <!-- ICONO DE USUARIO DESKTOP (circle) -->
+        <div class="userDesktop">
+          <div class="menu-user" id="user-desplegable">
+            <a href="/user/perfil">Mis datos</a>
+            <a href="/user/logout"
+              id="logout2                                                                                                                                                                                                                                                                                                                                                                                                                      ">Cerrar
+              sesión</a>
+              <% if (session.user.rol == 2 || session.user.rol == 3) { %>
+                <a href="/admin/products">ADMIN</a>
+                <% } %>
+
+          </div>
+
+          <a id="circle_despegable" class="align-icon icon-size">
+            <div class="avatarHeader">
+              <img <%=/http/.test(user.avatar) ?`src=${user.avatar}` :`src=/img/user/userAvatars/${user.avatar}` %>
+              alt="">
+            </div>
+          </a>
+        </div>
+        <% }else{ %>
+          <!-- ICONO DE USUARIO DESKTOP (circle) -->
+          <a href="/user/login" class="userDesktop align-icon icon-size">
+            <span class="iconify" data-icon="bi:person-circle" data-inline="false"></span>
+          </a>
+          <% } %>
+            <!-- NAVEGACION PRINCIPAL (DESKTOP) -->
+            <nav class="navbar" id="subMenu">
+              <ul>
+                <li class="btn"><a href="/">Inicio</a></li>
+                <li id="categoriasDesplegableDesktop" class="btn btnDesp">
+                  <a>Categorías</a>
+                </li>
+                <li class="btn"><a href="/products/12">Accesorios</a></li>
+                <li class="btn"><a href="/products">Todos los productos</a></li>
+              </ul>
+            </nav>
+           
+            <!-- BARRA DE BÚSQUEDA -->
+            <form style="width: 0vw; opacity: 0" action="/search" method="GET" class="search-bar" id="search-mobile">
+              <input type="text" class="input-header" name="keys" placeholder="Buscar..." />
+              <button type="submit" id="btn-lupa">
+                <span class="iconify iconLupaBar" data-icon="akar-icons:search" data-inline="false">
+                </span>
+              </button>
+            </form>
+  </header>
+  <div class="categoriesBox" id="CBox">
+    <div class="categoriesList">
+        <% locals.categories.forEach(category=> { %>
+            <a href="/products/<%= category.id %>">
+                <span>
+                    <%= category.name %>
+                </span></a>
+            <% }); %>
+    </div>
+</div>

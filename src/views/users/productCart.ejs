@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <%- include('../partials/load.ejs') %> <%- include('../partials/header.ejs')
+    %>
+
+    <main class="container-cart">
+      <section class="section1">
+        <table class="table" id="lista-compra">
+          <thead>
+            <tr class="table-danger">
+              <th scope="col">Imagen</th>
+              <th scope="col">Titulo</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Sub-total</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          
+          <!-- LISTA DE PRODUCTOS EN CARRITO -->
+          <tbody>
+
+
+
+
+          </tbody>
+          <!-- LISTA DE PRODUCTOS EN CARRITO END (enviados desde javascript)-->
+          <tr>
+            <th colspan="4" scope="col" class="text-right">TOTAL :</th>
+            <th scope="col">
+              <p id="total"></p>
+            </th>
+          </tr>
+        </table>
+      </section>
+
+      <!-- BOTONES DE OPERACIONES -->
+
+      <section class="buttonsIcons">
+
+        <!-- BOTON SEGUIR COMPRANDO -->
+        <a id="iconArrow" class="btn btn-outline-secondary h-2"
+          >
+          <i class="fal fa-tshirt" style="font-size: 1.5rem"></i>
+        </a>
+
+        <script>
+          tippy('#iconArrow', {
+              content: "Seguir Comprando",
+              animation: 'fade',
+              placement: 'top-start',
+              duration:200,
+          });
+      </script>
+
+        <!-- BOTON ACTUALIZAR PAGINA -->
+        <a id="iconSync" class="btn btn-outline-info h-2"
+          >
+          <span
+            class="iconify"
+            style="font-size: 1.5rem"
+            data-icon="ion:sync"
+          ></span>
+        </a>
+        <script>
+          tippy('#iconSync', {
+              content: "Actualizar",
+              animation: 'fade',
+              placement: 'top-start',
+              duration:200,
+          });
+      </script>
+
+        <!-- VACIAR CARRITO -->
+        <a id="vaciar-carrito-2" class="btn btn-outline-danger h-2"
+          >
+          <span
+            class="iconify"
+            style="font-size: 1.5rem"
+            data-icon="bi:cart-x"
+          ></span>
+        </a>
+
+        <script>
+          tippy('#vaciar-carrito-2', {
+              content: "Vaciar Carrito",
+              animation: 'fade',
+              placement: 'top-start',
+              duration:200,
+          });
+      </script>
+        <!-- REALIZAR COMPRA -->
+        <button
+          id="procesar-compra"
+          class="btn btn-outline-success h-2"
+          type="submit"
+        >
+        <i class="fas fa-shopping-basket"></i>
+        </button>
+
+        <script>
+          tippy('#procesar-compra', {
+              content: "Realizar Compra",
+              animation: 'fade',
+              placement: 'top-start',
+              duration:200,
+          });
+      </script>
+
+      </section>
+
+      <!-- OFERTAS SLIDER -->
+
+      <div>
+        <h4 class="questionAdd">Nuestras Ofertas</h4>
+      </div>
+      
+      <%- include ('../partials/slider.ejs') %>
+
+      <!-- OFERTAS SLIDER END -->
+    </main>
+
+    <%- include('../partials/whatsapp.ejs') %> <%-
+    include('../partials/footer.ejs') %> <%- include('../partials/scripts.ejs')
+    %>
+
+    <!-- Script -->
+    <script src="/js/slider.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<section class="section1" style=<%= display %>>
+            <button> <span class="iconify iconFilter" data-icon="mi:filter" data-inline="false"></span></button>
+            <form class="nav-bar">
+                <input class="filted" type="submit" value="FILTRAR">
+                
+                        <select class="dropdown" type="text" name="color" id="color" placeholder="Color" required title="Color">
+                            <option value="" selected hidden>Color</option>
+                            <% colors.forEach(color => { %>
+                                <option value="<%- color.id %>"><%- color.name %></option>
+                            <% }) %>
+                        </select>
+
+                        <select class="dropdown" name="size" id="size" required title="Talle">
+                            <option selected hidden>Talle</option>
+                            <% sizes.forEach(size => { %>
+                                <option value="<%- size.id %>"><%- size.name %></option>
+                             <% }) %>
+                        </select>
+                        
+                        <select class="dropdown" name="price" id="price" required title="price">
+                            <option selected hidden>Precio</option>
+                            <% product.find(product => { %>
+                                 <option value="<%- product.price %>"><%- product.price %></option>
+                             <% }) %>
+                        </select>
+            
+            </form>
+        </section>

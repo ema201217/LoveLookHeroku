@@ -1,0 +1,80 @@
+<section class="section2" id="lista-productos">
+  <% products.forEach(product=>{ %>
+  <article
+    class="product"
+    price="<%= product.price %>"
+    color="<%= product.colors[0].name %>"
+    size="<%= product.sizes[0].name %>"
+  >
+    <div class="cardProduct">
+      <a
+        href="/products/detail/<%= `${product.id}/${product.categoryId}`%>"
+        data-id="<%= product.id%>"
+      >
+        <img
+          src="/img/photos/<%= product.images.length>0? product.images[0].filename:'default.png' %>"
+          alt=""
+        />
+      </a>
+      <div class="infoProduct">
+        <h2>
+          <% if (product.name.length > 12) { %> <%-
+          `${product.name.slice(0,12)}...` %> <% }else{ %> <%= product.name %>
+          <% } %>
+        </h2>
+
+        <p class="price">
+          $ <%=toThousand(Math.round(product.price - product.price *
+          product.discount / 100))%>
+        </p>
+        <span class="price-line-medio">
+          <%= product.discount> 0?`$${toThousand(Math.round(product.price))}` :
+          "" %>
+        </span>
+        <p class="discount">
+          <%=product.discount> 0?`${product.discount} %Off` : "" %>
+        </p>
+      </div>
+
+      <div class="cardActionProduct">
+        
+
+        <!-- AGREGAR AL CARRITO -->
+        <span
+          id="AddCartCard"
+          class="btn-primary agregar-carrito cart"
+          data-icon-id="<%= product.id%>"
+          ><i class="fas fa-cart-plus"> </i
+        ></span>
+
+       
+
+        <!-- FAVORITOS -->
+        <span id="AddFavoritesCard" class="btn-primary"><i class="far fa-heart"></i></span>
+
+     
+
+        <!-- "fas fa-heart" para cuando esta seleccionado  -->
+      </div>
+    </div>
+  </article>
+  <% }) %>
+
+   <!-- tooltip agregar al carrito -->
+
+   <script>
+    tippy('#AddCartCard', {
+        content: "Agregar al carrito",
+        placement: 'top',
+    });
+</script>
+
+<!-- tooltip favoritos -->
+  <script>
+    tippy('#AddFavoritesCard', {
+        content: "Agregar a favoritos",
+        placement: 'top',
+        
+    });
+</script>
+</section>

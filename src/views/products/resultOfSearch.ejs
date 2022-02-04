@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head.ejs')%>
+
+    <body>
+      <%- include('../partials/load.ejs') %>
+      <%- include('../partials/header.ejs') %>
+
+            <main class="container-listProduct">
+                <% if (result.length> 0) { %>
+
+                    <h3 style="text-align: center;
+                    letter-spacing: 3px;
+                    font-size: 1.5rem;">
+                        Resultado de la búsqueda: <%= search.toUpperCase() %>
+                    </h3>
+
+                    <section class="section2">
+                      <% result.forEach(product=>{ %>
+                      <article class="product">
+                        <a href="/products/detail/<%= `${product.id}/${product.categoryId}`%>">
+                          <img src="/img/photos/<%= product.images.length>0? product.images[0].filename:'default.png' %>" alt="">
+                          <h3><% if (product.name.length > 12) { %>
+                            <%- `${product.name.slice(0,12)}...` %>
+                            <% }else{ %>
+                            <%= product.name %>
+                            <% } %> </h3>
+                
+                          <p class="price">
+                            <%=toThousand(Math.round(product.price - product.price * product.discount /
+                                        100))%>
+                          </p>
+                          <span class="price-line-medio">
+                            <%= product.discount> 0?`$${toThousand(Math.round(product.price))}` : "" %>
+                          </span>
+                          <p class="discount">
+                            <%=product.discount> 0?`${product.discount} %Off` : "" %>
+                          </p>
+                        
+                        </a>
+                      </article>
+                      <% }) %>
+                    </section>
+                    
+                    <% } else { %>
+
+
+                        <div>
+                            <p style="text-align: center;letter-spacing: 3px;margin: 25px 0 50px 0;font-size: 1.5rem;color:oracle;"><%= `No hay productos que coincidan con ${search.toUpperCase()}`  %>  
+                        </div>
+                    
+                        <% } %>
+                        <%- include('../partials/slider.ejs')%>
+                            
+                            
+            </main>
+
+            <%- include('../partials/footer.ejs')%>
+                <%- include('../partials/whatsapp.ejs')%>
+                <%- include('../partials/scripts.ejs')%>
+    </body>
+
+</html>

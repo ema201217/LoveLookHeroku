@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('../partials/head.ejs') %>
+
+    <body>
+        <%- include('../partials/load.ejs') %>
+            <%- include('../partials/header.ejs')%>
+
+                <main class="details-products">
+
+                    <section class="product">
+
+                        <!-- ///////////////////////////////////////////////// -->
+                        <!-- Container for the image gallery -->
+                        <div class="imgs galery-container">
+                            <!-- Full-width images with number text -->
+                            <% if (product.images.length> 0) { %>
+                                <div>
+                                    <% product.images.forEach((img,index)=> { %>
+                                        <div class="mySlides zoom">
+                                          
+                                            <img class="imgView"
+                                                src="/img/photos/<%= img.filename ? img.filename : 'default.png' %>">
+                                        </div>
+                                        <% });%>
+                                </div>
+
+
+
+                                <!-- Next and previous buttons -->
+                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                                <!-- Thumbnail images -->
+                                <div class="row">
+                                    <% product.images.forEach((img,index)=> { %>
+                                        <div class="column">
+                                            <img class="demo"
+                                                src="/img/photos/<%= img.filename ? img.filename : 'default.png' %>"
+                                                onclick=<%=`currentSlide(${index + 1})`%> alt="">
+                                        </div>
+                                        <% });%>
+                                </div>
+                                <% } %>
+                        </div>
+
+                        <!-- ///////////////////////////////////////////////// -->
+                        <div class="description-general-container">
+                            <div class="containerImage">
+                                <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                                <img id="expandedImg" style="width:fit-content">
+                                <div id="imgtext"></div>
+                            </div>
+
+                            <!-- detalle del producto -->
+                            <div class="description">
+                                <h5 class="name">
+                                    <%=product.name%>
+                                </h5>
+                                <p class="price">$ <%=toThousand(Math.round(product.price - product.price *
+                                        product.discount / 100))%>
+                                </p>
+                                <span class="price-line-medio">
+                                    <%= product.discount> 0?`$${toThousand(Math.round(product.price))}` : "" %>
+                                </span>
+                                <p class="discount">
+                                    <%=product.discount> 0?`${product.discount} %Off` : "" %>
+                                </p>
+                                <a href="" style="display: none;" data-id="<%= product.id %>"></a>
+                            </div>
+
+                            <!-- filtro de producto -->
+                            <form class="form-1" action="#" name="formulario-1">
+                                <h4 class="subtitle">Descripción del producto</h4>
+                                <p>
+                                    <%= product.description %>
+                                </p>
+                                <select class="select select-style" name="color" id="">
+                                    <option value="" hidden>Color</option>
+                                    <option value='<%= product.colors.length > 0 ? product.colors[0].id : ' '  %>'
+                                        <%=product.colors.length> 0 ? "selected" :null %>><%= product.colors.length>
+                                            0 ? product.colors[0].name : 'Color' %>
+                                    </option>
+
+                                </select>
+                                <select class="select select-style" name="talle" id="">
+                                    <option value="" hidden>Talles</option>
+                                    <option value='<%= product.sizes.length > 0 ? product.sizes[0].id : ' '  %>'
+                                        <%=product.sizes.length> 0 ? "selected" :null %>><%= product.sizes.length> 0
+                                            ? product.sizes[0].name : 'Talle' %>
+                                    </option>
+
+                                </select>
+                                <div class="d-flex justify-content-start flex-grow-wrap">
+                                    <!-- AGREGAR AL CARRITO -->
+                                    <span class="btn btn-primar m-2 detailButton agregar-carrito" id="AddCartDetail"><i
+                                            class="fas fa-cart-plus"></i><span></span></span>
+                                    <script>
+                                        tippy('#AddCartDetail', {
+                                            content: "Agregar al carrito",
+                                            animation: 'fade',
+                                            placement: 'top-end',
+                                            duration:200,
+                                            
+                                        });
+                                    </script>
+
+                                 
+                                    <!-- FAVORITOS -->
+                                    <span class="btn btn-danger m-2 detailButton agregar-favoritos" id="AddFavoriteDetail"><i
+                                                class="far fa-heart"></i></span>
+
+                                                <script>
+                                                    tippy('#AddFavoriteDetail', {
+                                                        content: "Agregar a favoritos",
+                                                        animation: 'fade',
+                                                        placement: 'top-start',
+                                                        duration:200,
+                                                        
+                                                    });
+                                                </script>
+
+                                </div>
+                                <!-- GUIA DE TALLES -->
+                                <h4 class="subtitle-guie-size"><a id="link-guie-task">Guiá de talles</a></h4>
+
+                                <!-- IMAGEN DE GUIA DE TALLES -->
+                                <div class="img" id="img-guie">
+                                    <img src="/img/guie-size.jpg" alt="">
+                                </div>
+
+                            </form>
+
+                            <div class="accordion-container">
+                                <div class="subtitle-item" id="ItemSubtitle1">
+                                    <h4>Envios ...</h4>
+                                </div>
+                                <div class="contain-hidden" id="InfoHidden">
+
+                                    <p>El valor de envío dependerá del método de envío que selecciones al momento de
+                                        finalizar tu compra. Según cada método de envío los valores son:</p>
+                                    <p>Envío GBA y Resto del país $550</p>
+                                    <p>Envío CABA y Alrededores $490</p>
+                                    <p>Retiro en Sucursal Andreani $290</p>
+                                    <h4>¿CUÁL ES EL TIEMPO DE ENTREGA?</h6>
+                                        <p>Envíos a Sucursal o Domicilio (CABA Y GBA): Entrega entre 3 a 6 días
+                                            hábiles.</p>
+                                        <p>Envíos a Sucursal o Domicilio (INTERIOR): Entrega entre 4 a 8 días
+                                            hábiles.</p>
+                                        <p>En épocas de alta demanda como HotSale y CyberMonday, las entregas se
+                                            pueden ver demoradas hasta 15 días hábiles.</p>
+                                </div>
+                                <div class="subtitle-item" id="ItemSubtitle2">
+                                    <h4>Medios de pago ...</h4>
+                                </div>
+                                <div class="contain-hidden" id="InfoHidden">
+                                    <p>Nuestro sitio opera los pagos vía MercadoPago y contempla las siguientes tres
+                                        formas de pago:</p>
+                                    <p>Tarjetas de Crédito o Debito, tales cómo: Visa, Mastercard, American Express,
+                                        Tarjeta Banco Patagonia MercadoPago, Tarjeta Naranja, Nativa, Tarjeta
+                                        Shopping, Cencosud, Diners, Cordobesa, CMR Falabella y Tarjeta Wallmart.</p>
+                                </div>
+                                <div class="subtitle-item" id="ItemSubtitle3">
+                                    <h4>Cambios y devoluciones ...</h4>
+                                </div>
+                                <div class="contain-hidden" id="InfoHidden">
+                                    <p>En caso de devolver la prenda comunícate a nuestro Whatsapp 0800-222-2299 >
+                                        opción C > atención al cliente.
+                                        Solicitando el retiro sin cargo. Y una vez que él o los artículos lleguen a
+                                        planta, se efectuará el reintegro al mismo medio de pago con el cuál
+                                        abonaste.</p>
+                                    <p>Importante: El valor del producto a cambiar será el que pagaste originalmente
+                                        por el mismo, independientemente del valor que tenga al momento del cambio.
+                                        Y sólo podrán cambiarse aquellas prendas que se encuentren en perfectas
+                                        condiciones e incluyan su etiqueta original colocada. Asimismo deberá
+                                        acompañarse la correspondiente factura de compra.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                    <div class="closes" id="closes" style="display: none;"></div>
+
+                    <section class="add-look-container">
+                        <h2><a href="/products">
+                                <%= titleSlider %>
+                            </a>
+                        </h2>
+
+                        <%- include('../partials/slider.ejs') %>
+                    </section>
+
+                </main>
+
+                <%- include('../partials/whatsapp.ejs') %>
+
+                    <%- include('../partials/footer.ejs') %>
+
+                        <!-- SCRIPTS general -->
+                        <%- include('../partials/scripts.ejs') %>
+
+                            <!-- View name -->
+                            <script src="/js/productDetail.js"></script>
+
+                            <!-- Slider -->
+                            <script src="/js/slider.js" defer></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,47 @@
+.error-title{
+    font-size: 1.5rem;
+    font-family: 'Poppins';
+    text-align: center;
+    margin: 0 20px;
+    color: gray;
+    animation: titilar 1s 1s infinite alternate;
+}
+.error-logo{
+    width: 50%;
+    margin: 0 auto;
+    animation: titilar 1s 4s infinite alternate;
+}
+.container-logo-error404{
+    position: relative;
+    margin: 0 auto;
+    display: block;
+}
+.error-img{
+    margin: 0 auto;
+    width: 50%;
+    position: absolute;
+    left: 0;
+    filter: opacity(0.3);
+    right: 0;
+    animation: titilar 1s 2s infinite alternate;
+}
+.container-error-404{background-color: var(--fondo-claro);padding: 20px;}
+.container-img{
+    position: relative;
+    width: 100%;
+}
+
+.fram-item{
+    height: 400px;
+}
+
+@media screen and (min-width:768px) {
+}
+
+@media screen and (min-width:1024px) {
+    .container-img{
+        margin: 0 auto;
+        width: 80%;
+        padding: 0 150px 100px;
+    }
+}

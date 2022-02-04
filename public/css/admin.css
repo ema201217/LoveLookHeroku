@@ -1,0 +1,470 @@
+.admin .button-add {
+    width: fit-content;
+    margin: 10px auto;
+    background-color: lightgreen;
+    border: 2px solid green;
+}
+.admin .button-add a {
+    width: 100%;
+    padding: 10px;
+}
+
+.admin textarea {
+    overflow: hidden;
+    resize: none;
+}
+.admin .description-cell {
+    overflow-wrap: anywhere;
+    font-size: 0.7rem;
+}
+
+.admin .left-row {
+    color: white;
+    padding: 5px;
+    background-color: gray;
+    box-shadow: 0 0 3px lightgray;
+    width: fit-content;
+    font-size: 2rem;
+    margin: 10px;
+}
+
+.admin h2 {
+    text-shadow: 0 0 3px gray, -1px -1px 3px black, -2px -2px 6px black;
+    color: var(--fondo-claro);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.admin .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 15px;
+}
+
+.admin .icon-right-table {
+    font-size: 1.5rem;
+    display: inline-block;
+    opacity: 0;
+    animation: titilar 1s ease infinite alternate;
+}
+.admin .icon-touch {
+    font-size: 2rem;
+    display: inline-block;
+}
+.admin .inputRows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}
+.admin .imgs-admin{ 
+    width: 100%;
+    margin: 0;
+ }
+
+.admin .table-container {
+    overflow-y: hidden;
+    width: 80%;
+    margin: 0 auto;
+    text-align: right;
+}
+.admin table {
+    font-size: 1rem;
+}
+.admin .button-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin th,
+.admin td {
+    margin: 10px;
+    text-align: center;
+    padding: 5px;
+    background-color: whitesmoke;
+    empty-cells: hide;
+}
+
+.admin .icons-guie-scroll {
+    width: 100%;
+    position: sticky;
+    left: 0;
+}
+
+@keyframes titilar {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.admin input,
+.admin select,
+.admin .input,
+.admin textarea {
+    margin: 10px 5px 10px 0;
+    
+    font-size: 1rem;
+    color: gray;
+    background-color: var(--fondo-claro);
+    outline: none;
+    padding-left: 10px;
+    border: none;
+    width: 100%;
+}
+
+.admin .container-addOption{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin: 5px;
+    justify-content: center;
+}
+.admin .icon-addColor{
+    font-size: 1.5rem;
+    color: var(--bordes_claro);
+    background-color: black;
+    padding: 2px;
+}
+.admin .input-addOption{font-size: 0.7rem;}
+
+.admin textarea {
+    height: 120px;
+}
+.admin .input {
+    padding: 0;
+    margin: 10px auto;
+    background-color: white;
+}
+.admin .label-input-admin{
+    
+align-self: flex-start;
+}
+.admin input:focus,
+.admin select:focus {
+    color: black;
+    border: 1px solid var(--shadows);
+    background-color: white;
+}
+
+.admin .error-validator{
+    
+color: red;
+align-self: flex-start;
+background-color: whitesmoke;
+width: 100%;
+font-weight: bold;
+letter-spacing: 3px;
+text-align: center;
+display: block;
+margin: auto;
+}
+
+.admin input::placeholder,
+.admin select::selection {
+    padding-left: 5px;
+    background-color: var(--fondo-claro);
+    width: 100%;
+}
+
+.admin .edit {
+    border: 1px solid green;
+    box-shadow: none;
+    border-radius: 10px;
+    width: 50px;
+    color: green;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.admin .edit:hover {
+    color: white;
+    border: 0.5px solid black;
+    background: blue;
+    box-shadow: inset 0 0 19px blue;
+    transform: scale(1.2);
+}
+
+.admin .prev-img {
+    width: 120px;
+    height: 120px;
+    border: 1px solid gray;
+}
+.admin button.delete {
+    color: red;
+    border: 1px solid red;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 10px;
+    transition: all .4s ease;
+    width: 50px;
+    font-size: 1.5rem;
+    height: 50px;
+    cursor: pointer;
+    margin: 0;
+}
+.admin button.delete:hover {
+    color: white;
+    border: 0.5px solid black;
+    background: red;
+    box-shadow: inset 0 0 19px red;
+}
+
+.admin button {
+    width: 100%;
+}
+
+.admin button.btn-add:active {
+    color: white;
+    background-color: green;
+    box-shadow: inset 0 0 10px 4px;
+}
+.admin button.btn-reset:active {
+    color: white;
+    background-color: red;
+    box-shadow: inset 0 0 10px 4px white;
+}
+
+.admin button.btn-reset {
+    color: black;
+    font-size: 1.5rem;
+    border-color: red;
+    box-shadow: inset 0 0 29px lightpink;
+}
+
+.admin .subir {
+    padding: 5px 10px;
+    background: #97f797;
+    border: 1px solid #000;
+    width: 100px;
+    text-align: center;
+    border-radius: 5px;
+    color: black;
+    box-shadow: inset 0 0 10px green;
+    transition: background 2s ease, border-radius 3s ease;
+}
+
+.admin .subir:hover {
+    color: #fff;
+    background: green;
+    border-radius: 0 0 20px 5px;
+}
+.form-secondary{
+    width: 80%;
+}
+.admin .container-inserts{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+
+.admin .windowGeneral{
+    width: 0;
+}
+.admin .activeWindow{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 250;
+    background-color: rgba(0,0,0,0.5);
+}
+.admin .btn-windowDel{
+    box-shadow: none;
+    width:50%;
+    height: 35px;
+    font-size: 100%;
+}
+
+.preview-image {
+    padding-top: 5px;
+    
+}
+
+@media screen and (min-width: 768px) {
+
+    .admin h2 {
+        text-shadow: 0 0 3px gray, -1px -1px 3px black, -2px -2px 6px black;
+        color: var(--fondo-claro);
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .admin .container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .admin .inputRows {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .admin .container-addOption{
+        
+justify-content: flex-end;
+    }
+
+    .admin .button-add {
+        margin: 10px 20px;
+    }
+
+    .admin th,
+    .admin td {
+        margin: 0 10px;
+        text-align: center;
+    }
+
+    .admin td img {
+        object-fit: contain;
+    }
+
+    .admin td .img-value {
+        height: 130px;
+        object-fit: contain;
+    }
+
+    .admin .input {
+        padding: 0;
+        margin: 10px 5px;
+    }
+
+    .admin button {
+        padding: 0;
+    }
+
+    .admin .subir {
+        width: 100px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .admin .subir:hover {
+        color: #fff;
+        background: green;
+    }
+    .form-secondary{
+    width: 60%;
+}
+
+}
+
+@media screen and (min-width: 1024px) {
+    .admin button.btn-add:hover {
+        color: white;
+        background-color: green;
+        box-shadow: inset 0 0 10px 4px;
+    }
+    .admin button.btn-reset:hover {
+        transform: scale(1.2);
+        color: black;
+        background-color: red;
+        box-shadow: inset 0 0 10px 4px white;
+    }
+    .admin .icons-guie-scroll {
+        display: none;
+    }
+
+    .admin {
+        padding: 20px;
+        position: relative;
+    }
+
+    .admin textarea {
+        margin: 0 auto;
+    }
+
+    .admin h2 {
+        text-shadow: 0 0 3px gray, -1px -1px 3px black, -2px -2px 6px black;
+        color: var(--fondo-claro);
+        font-size: 3rem;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .admin .container {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .admin .inputRows {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 40%;
+    }
+
+    .admin .table-container {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .admin table {
+        width: 100%;
+        font-size: 1.2rem;
+        margin: 0 auto;
+    }
+
+    .admin input,
+    .admin select,
+    .admin button,
+    .admin .input {
+        
+        align-self: center;
+        margin: 10px 5px 10px 0;
+    }
+
+    .admin .container-addOption{
+    width: 80%;
+    align-self: center;
+    justify-content: center;
+}
+
+    .admin .edit:hover {
+        transform: scale(1.1);
+    }
+
+    
+
+
+    .admin button.delete:focus-within form {
+        display: block;
+    }
+
+    .admin button.delete h3:focus .admin .formDelete{
+        display: none;
+    }
+    .closeButtom{
+        display: none;
+    }
+    .admin button.btn-reset {
+        font-size: 1rem;
+        height: 30px;
+    }
+
+    .admin .subir:hover {
+        color: #fff;
+        background: green;
+        border-radius: 0 0 20px 5px;
+    }
+    .form-secondary{
+    width: 30%;
+    align-self: self-start;
+}
+
+}

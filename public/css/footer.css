@@ -1,0 +1,430 @@
+/* DARK MODE */
+.footer .redes-sociales .iconify.dark {
+    filter:drop-shadow(1px 1px 4px white);
+}
+.footer .redes-sociales .instagram.dark:hover {
+    color: gray;
+    filter: blur(1px);
+}
+.footer .redes-sociales .facebook.dark:hover {
+    color: gray;
+    filter: blur(1px);
+}
+
+.footer .help ul.dark, .footer .contact ul.dark, .footer .about ul.dark{
+    
+background-color: rgb(61, 56, 56);
+}
+
+ .footer.dark{
+        background-color: rgb(61, 56, 56);
+        color: white;
+        transition: 0.5s all ease;
+    }
+ .footer a.dark{
+        color: white;
+        text-shadow: 0 0 4px black;
+    }
+ .footer a.dark:hover{
+        color: gray;
+    }
+ .footer .footer-sections-desktop .footer-subtitle.dark {
+       text-shadow: 1px 1px 4px white;
+    }
+/* DARK MODE END */
+
+#u_0_4_DO{display: none !important;}
+
+/* End Page */
+#endPage{
+    position: fixed;
+    right: 50%;
+    bottom: 0;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+    height: 0;
+    text-shadow: 1px 1px 4px grey, -1px -1px 4px grey;
+    padding: 0;
+    background-color: rgb(227 38 111 / 31%);
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    transition: .5s ease;
+    box-shadow: 0px 0px 4px black,inset 0 0 11px var(--bordes);
+    opacity: 0;
+    z-index: 10000;
+    transform: translateX(50%);
+}
+#endPage.show-endPage{
+    opacity: 1;
+    bottom: 0;
+    animation: estirar 1.2s 1 alternate ease;
+    color: white;
+    font-size: 1rem;
+    padding: 30px 5px;
+}
+#endPage:hover{font-size: 1.3rem;transition: .5s ease;}
+
+@keyframes estirar {
+    0%{
+        
+        height: 50px;
+    }
+    100%{
+        
+        height: 30px;
+    }
+    
+}
+
+.fa-arrow-down{
+    position: relative;
+    text-shadow: 0 -3px 2px black;
+    transform: rotate(180deg);
+    color: var(--fondo-claro);
+    animation: rowDownMove .5s alternate infinite ease;
+}
+
+@keyframes rowDownMove {
+    0%{
+        top:10px;
+        
+    
+    }
+    50%{
+      
+    }
+    100%{
+        top:-10px;border-bottom:1px solid black;
+    }
+}
+/* icono de whatsapp */
+.whatsapp {
+    z-index: 100;
+    display   : flex;
+    position: fixed;
+    right: 17px;
+    bottom: 72px;
+    font-size: 3rem;
+    margin: 0;
+    grid-area : whatsapp;
+    transition: filter 1s ease,transform 0.5s ease;
+    opacity: 0.8;
+    height: fit-content;
+    width: fit-content;
+}
+
+.whatsapp:hover {
+    transform: scale(1.2);
+    filter   : drop-shadow(0px 0px 3px black);
+    opacity: 1;
+}
+
+
+
+.whatsapp:active {
+    opacity: 1;
+    animation: vibracionWhatsapp 10ms 4;
+}
+
+
+@media screen and (min-width: 768px) {
+    .whatsapp {
+        font-size: 3rem;
+        right: 15px;
+        bottom: 70px;
+        margin: 0;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .whatsapp {
+        bottom: 80px;
+        right: 22px;
+        font-size: 3.5rem;
+    }
+}
+
+
+
+/* ///////////////////// */
+
+
+/* View Mobile of Footer */
+
+.footer {
+    padding: 10px;
+    width: 100%;
+    font-family: var(--poppins);
+    display    : grid;
+    border-top: 3px
+ solid var(--fondo-claro);
+    display    : -ms-grid;
+    display    : -moz-grid;
+    grid-template-areas: /* info sobre esta practica :  https://developer.mozilla.org/es/docs/Web/CSS/grid-template-areas */
+        "ayuda    ayuda ayuda ayuda    "
+        "contacto contacto  contacto contacto   "
+        "nosotros     nosotros  nosotros  nosotros    "
+        "redes    redes     redes     redes "
+        "afip .   .     . "
+        "shared shared shared shared"
+        "copy copy copy  copy ";
+    margin-top: 15px;
+}
+
+/* Elementos generales*/
+.footer .footer-sections {
+    margin: auto;
+}
+
+
+.footer .footer-sections .footer-subtitle {
+    cursor: pointer;
+    border-bottom: 1px solid var(--fondo);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 2s ease;
+    width: 60vw;
+    margin: 5px;
+    padding: 5px 10px;
+    box-shadow: 0px 2px 3px var(--shadows);
+}
+
+.footer .footer-sections .footer-subtitle h3{
+    width: 100%;
+}
+
+.footer .footer-sections .footer-subtitle:hover {
+    cursor          : pointer;
+    background-color: var(--fondo);
+}
+
+/* Secciones individuales */
+
+.footer .help {
+    grid-area: ayuda;
+    position : relative;
+}
+
+.footer .help ul,
+.footer .contact ul,
+.footer .about ul {
+    display: none;
+    position        : absolute;
+    background-color: white;
+    margin          : 0 auto;
+    font-size: 0.9rem;
+    font-weight: bold;
+    width: 100%;
+    padding: 0 12px;
+    border-radius   : 5px;
+    box-shadow      : 1px 1px 4px var(--shadows);
+    z-index: 10;
+}
+
+.footer .help .list-help {
+    bottom: 0;
+}
+
+.footer .contact .list-contact {
+    bottom: 0;
+}
+
+.footer .about .list-about {
+    bottom: 0;
+}
+
+.footer-sections-desktop{
+    display: none;
+}
+
+.footer .help .list-help li,
+.footer .contact .list-contact li,
+.footer .about .list-about li {
+    padding: 20px;
+}
+
+
+.footer .contact {
+    grid-area: contacto;
+    position : relative;
+}
+
+.footer .about {
+    grid-area: nosotros;
+    position : relative;
+}
+
+.footer .redes-sociales {
+    width          : 120px;
+    /* margin         : 0 auto; */
+    display: flex;
+    justify-content: space-around;
+    align-items    : center;
+    grid-area      : redes;
+}
+
+.footer .redes-sociales .iconify {
+    font-size : 40px;
+    transition: color 1s ease;
+}
+
+
+.footer .redes-sociales .instagram:hover {
+    color: orange;
+    filter: blur(1px);
+}
+
+
+
+.footer .redes-sociales .facebook:hover {
+    color: blue;
+    filter: blur(1px);
+}
+
+
+.footer .legale {
+    grid-area : copy;
+    align-self: center;
+    text-align: center;
+    font-size: .6rem;
+    letter-spacing: 4px;
+}
+
+.footer .otros {
+    grid-area: afip;
+}
+
+.footer .otros .antivirus {
+    width  : 100px;
+    display: none;
+}
+
+.footer .otros .afip {
+    width: 50px;
+}
+
+
+/* View TABLET of footer*/
+@media screen and (min-width: 768px) {
+    
+    .footer {
+        margin: auto;
+        grid-template-areas:
+            " . ayuda     contacto nosotros       .       "
+            " redes redes . afip     afip   "
+            "shared shared shared shared shared"
+            "copy  copy  copy     copy     copy        ";
+        width: 100%;
+    }
+
+
+    .footer .otros .antivirus {
+        display: inline-block;
+    }
+
+    .footer .footer-sections .footer-subtitle {
+        width: 200px;
+    }
+
+    .footer .help .list-help li,
+.footer .contact .list-contact li,
+.footer .about .list-about li {
+    font-size: 5rem;
+}
+
+}
+
+/* View Desktop of footer */
+
+@media screen and (min-width: 1024px) {
+   /*  .whatsapp {
+        bottom: 20vw;
+right: 2vw;
+    } */
+    /* Elementos activadas */
+
+    .footer .help ul,
+    .footer .contact ul,
+    .footer .about ul {
+        display: block;
+        position: relative;
+        width        : fit-content;
+        background: none;
+        padding      : 5px;
+        border-radius: none;
+        z-index: 12;
+        box-shadow   : none;
+        text-align: left;
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    /* Elemento contenedor principal */
+
+    .footer {
+        width: 100%;
+        padding: 10px;
+        margin: 0 auto;
+        grid-template-areas:
+            "ayuda    ayuda ayuda contacto  contacto contacto  nosotros  nosotros   nosotros    "
+            ".    redes     redes     redes     redes    redes      afip       afip . "
+            "    copy     copy  copy      copy    copy shared shared shared shared    "
+            " copy copy copy copy copy shared shared shared shared";
+    }
+   
+    /* Elementos generales */
+
+   
+   
+    .footer .footer-sections {
+       display: none;
+    }
+
+    .footer .footer-sections-desktop{
+        display: block;
+        margin: 0 auto;
+    }
+
+    /* Secciones del footer */
+
+    .footer .footer-sections-desktop .footer-subtitle {
+        border         : none;
+        justify-content: center;
+        padding        : 0 0 10px 0;
+    }
+   
+
+    .footer .footer-sections-desktop .footer-subtitle:hover {
+        cursor          : initial;
+        /* background-color: white; */
+    }
+
+    .footer .footer-sections-desktop .footer-subtitle .icon {
+        display: none;
+    }
+
+    .footer .footer-sections-desktop .enlace-hover :hover {
+        text-shadow: 1px 1px 4px black, -1px -1px 4px black;
+        color      : var(--fondo);
+        font-weight: bold;
+        transition : all 0.5s ease;
+    }
+
+    .footer-sections-desktop .footer-sections-desktop .redes-sociales{
+      margin: auto;
+    }
+    /* Secciones individuales */
+
+    .footer .otros {
+        display    : flex;
+        align-items: center;
+        gap        : 10px;
+    }
+
+    .footer .legale{
+        text-align: left
+    }
+}

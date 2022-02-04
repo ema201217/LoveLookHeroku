@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<%-include('../partials/headAdmin.ejs') %>
+
+<body>
+    <%- include('../partials/load.ejs') %> <%-
+    include('../partials/headerAdmin.ejs') %>
+    <main class="admin">
+        <h2 class="mt-4 text-center">Productos</h2>
+        <div class="btn btn-success m-2">
+            <a href="/admin/products/add" class="text-white"><span class="iconify" data-icon="fluent:add-12-filled">
+                </span>Agregar Productos</a>
+        </div>
+        <div class="table-container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Edición</th>
+                        <th>Eliminar</th>
+                        <th>Precio</th>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Descuento</th>
+                        <th>Descripción</th>
+                        <th>Código</th>
+                        <th>Colores</th>
+                        <th>Talle</th>
+                        <th>Cantidad</th>
+                        <th>Temporada</th>
+                        <th>Categoría</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(product=>{ %>
+                    <tr id="<%= product.id %>">
+                        <th>
+                            <a class="edit" role="button" href="/admin/products/edit/<%- product.id %>">
+                                <span class="iconify" data-icon="line-md:edit"></span>
+                            </a>
+                        </th>
+                        <td>
+                            <form class="formDelete" id="formDelete"
+                                action="/admin/products/productDelete/<%= product.id %>?_method=DELETE" method="POST">
+                                <button class="FalseButton delete deleteProduct" id="deleteButton">
+                                    <span id="FalseButton" class="iconify" data-icon="feather:delete"></span>
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <%= product.price ? `$${toThousand(product.price)}` : "--" %>
+                            <!-- PRECIO -->
+                        </td>
+                        <td class="imgs-admin d-flex">
+                            <%product.images.forEach(image => {%>
+                            <a href="products/productDetail.ejs">
+                                <img class="img-value"
+                                    src="/img/photos/<%= product.images.length>0? image.filename:'default.png' %>"
+                                    alt="" />
+                                <% }) %>
+                            </a>
+                            <!-- IMAGEN -->
+                        </td>
+                        <td>
+                            <%= product.name %>
+                            <!-- NOMBRE -->
+                        </td>
+                        <td>
+                            <%= product.discount ? `${product.discount}%` : "--" %>
+                            <!-- DESCUENTO -->
+                        </td>
+                        <td class="description-cell">
+                            <%= product.description ? `${product.description}` : "--" %>
+                            <!-- DESCRIPCIÓN -->
+                        </td>
+                        <td>
+                            <%=product.id %>
+                            <!-- CODIGO -->
+                        </td>
+                        <td>
+                            <% product.colors.forEach(color=>{ %>
+                            <%=color.name.toUpperCase()%><br />
+                            <% }) %>
+                            <!-- COLOR -->
+                        </td>
+                        <td>
+                            <% product.sizes.forEach(size=>{ %> <%=size.name.toUpperCase()%>
+                            <% }) %>
+                            <!-- TALLE -->
+                        </td>
+                        <td>
+                            <%=product.amount %>
+                            <!-- CANTIDAD -->
+                        </td>
+                        <td>
+                            <%=product.season.name %>
+                            <!-- TEMPORADA -->
+                        </td>
+                        <td>
+                            <%=product.category.name %>
+                            <!-- CATEGORÍA -->
+                        </td>
+                    </tr>
+                </tbody>
+                <% }) %>
+            </table>
+        </div>
+
+        <a id="endPage"><i class="fas fa-arrow-down"></i></a>
+    </main>
+    <script src="/js/sweetalert2.js"></script>
+</body>
+
+</html>

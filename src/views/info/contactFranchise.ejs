@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('../partials/head.ejs') %>
+
+    <body>
+        <%- include('../partials/recaptcha.ejs') %>
+        <%- include('../partials/load.ejs') %>
+            <%- include('../partials/header.ejs') %>
+
+                <main class="form-contact-container">
+
+                    <form id="form" action="/info/contact/franchise" method="POST">
+
+                        <!-- NOMBRE -->
+                        <div class="form-item" id="nombre">
+                            <label for="nombreInput">Nombre</label>
+                            <input type="text" name="name" id="nombreInput" value="<%=locals.old && old.name %>">
+                            <% if(locals.errors && errors.name){ %>
+                                <span id="nombreError" class="error validationsErrors">
+                                    <%= errors.name.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="nombreError" class="error"></span>
+                                    <% } %>
+                        </div>
+
+                        <!-- APELLIDO -->
+                        <div class="form-item" id="apellido">
+                            <label for="apellidoInput">Apellido</label>
+                            <input type="text" name="lastName" id="apellidoInput" autocomplete="family-name"
+                                mozactionhint="siguiente" value=<%=locals.old && old.lastName %>>
+                            <% if(locals.errors && errors.lastName){ %>
+                                <span id="apellidoError" class="error validationsErrors">
+                                    <%= errors.lastName.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="apellidoError" class="error"></span>
+                                    <% } %>
+
+                        </div>
+
+                        <!-- DNI -->
+
+                        <div class="form-item" id="dni">
+                            <label for="dniInput">DNI</label>
+                            <input type="text" name="dni" id="dniInput" value="<%=locals.old && old.dni %>">
+                            <% if(locals.errors && errors.dni){ %>
+                                <span id="dniError" class="error validationsErrors">
+                                    <%= errors.dni.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="dniError" class="error"></span>
+                                    <% } %>
+                        </div>
+
+                        <!-- EMAIL -->
+                        <div class="form-item" id="email">
+                            <label for="emailInput">E-mail</label>
+                            <input type="text" name="email" id="emailInput" title="ejemplo@email.com"
+                                value=<%=locals.old && old.email %>>
+                            <% if(locals.errors && errors.email){ %>
+                                <span id="emailError" class="error validationsErrors">
+                                    <%= errors.email.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="emailError" class="error"></span>
+                                    <% } %>
+                        </div>
+
+                        <!-- TELEFONO -->
+
+                        <div class="form-item" id="telefono">
+                            <label for="telInput">Teléfono</label>
+                            <input type="text" name="phone" title="Ingresa el numero sin - _ ni espacios" id="telInput"
+                                autocomplete="tel" mozactionhint="siguiente" value="<%=locals.old && old.phone %>">
+
+                            <% if(locals.errors && errors.phone){ %>
+                                <span id="telError" class="error validationsErrors">
+                                    <%= errors.phone.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="telError" class="error"></span>
+                                    <% } %>
+                        </div>
+
+
+                        <!-- PROVINCIAS -->
+
+                        <div class="form-item" id="province">
+                            <label for="provinceInput">Provincias</label>
+                            <select type="text" name="province" id="provinceInput" mozactionhint="siguiente">
+                                <option value="" selected hidden></option>
+                            </select>
+
+                            <% if(locals.errors && errors.province){ %>
+                                <span id="provinceError" class="error validationsErrors">
+                                    <%= errors.province.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="provinceError" class="error"></span>
+                                    <% } %>
+                        </div>
+
+                        <!-- LOCALIDAD -->
+                        <div class="form-item" id="localidad">
+                            <label for="localidad">Localidad</label>
+                            <select type="text" name="location" id="localidadInput">
+                                
+                                </select>
+                            <% if(locals.errors && errors.location){ %>
+                                <span id="localidadError" class="error validationsErrors">
+                                    <%= errors.location.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="localidadError" class="error"></span>
+                                    <% } %>
+                        </div>
+
+                        <!-- DOMICILIO -->
+                        <div class="form-item" id="domicilio">
+                            <label for="domicilio">Domicilio</label>
+                            <input type="text" name="address" id="domicilioInput"
+                                mozactionhint="siguiente" title="calle 00000" value="<%=locals.old && old.address %>">
+                            <% if(locals.errors && errors.address){ %>
+                                <span  id="domicilioError" class="error validationsErrors">
+                                    <%= errors.address.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="domicilioError" class="error"></span>
+                                    <% } %>
+                        </div>
+
+                        <!-- CUIT -->
+                        <div class="form-item" id="cuit">
+                            <label for="cuit">CUIT</label>
+                            <input type="text" name="cuit" id="cuitInput" mozactionhint="siguiente" value="<%=locals.old
+                                && old.cuit %>">
+                            <% if(locals.errors && errors.cuit){ %>
+                                <span id="cuitError" class="error validationsErrors">
+                                    <%= errors.cuit.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="cuitError" class="error"></span>
+                                    <% } %>
+
+                        </div>
+                        <!-- RAZON SOCIAL -->
+                        <div class="form-item" id="razon">
+                            <label for="RSocial">Razón Social</label>
+                            <input type="text" name="businessName" id="RSocialInput" mozactionhint="siguiente"
+                                value="<%=locals.old && old.businessName %>">
+                            <% if(locals.errors && errors.businessName){ %>
+                                <span id="RSocialError" class="error validationsErrors">
+                                    <%= errors.businessName.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="RSocialError" class="error"></span>
+                                    <% } %>
+
+
+                        </div>
+                        <!-- LOCALIDAD SOCIAL -->
+                        <!-- id="direSocialInput" -->
+                        <div class="form-item">
+                            <label for="DSocial">Localidad Social</label>
+                            <select type="text" name="socialLocation" id="DSocialSelect" value="<%=locals.old &&
+                                old.socialLocation %>">
+
+                            </select>
+                            <% if(locals.errors && errors.socialLocation){ %>
+                                <span id="DSocialError" class="error validationsErrors">
+                                    <%= errors.socialLocation.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="DSocialError" class="error"></span>
+                                    <% } %>
+
+
+                        </div>
+
+                        <!-- MENSAJE -->
+                        <div class="form-item" id="mensajeInput">
+                            <label for="msg">Mensaje</label>
+                            <textarea rows="5" maxlength="97" title="97 caracteres máximo" name="msg" id="msgInput"
+                                placeholder="Hola !!"><%= locals.old && old.msg %></textarea>
+
+                            <% if(locals.errors && errors.msg){ %>
+                                <span id="msgError" class="error validationsErrors">
+                                    <%= errors.msg.msg %>
+                                </span>
+                                <% }else{ %>
+                                    <span id="msgError" class="error"></span>
+                                    <% } %>
+
+                        </div>
+                        <%- include('../partials/reCaptView.ejs') %>
+                        <div class="form-item">
+                            <button class="btn-send" type="submit">Enviar</button>
+                        </div>
+                    </form>
+
+                </main>
+
+                <%- include('../partials/whatsapp.ejs') %>
+
+                    <%- include('../partials/footer.ejs') %>
+
+                      
+                    <%- include('../partials/scripts.ejs') %>   
+                    <script src="/js/validationContact.js"></script>
+
+    </body>
+
+</html>

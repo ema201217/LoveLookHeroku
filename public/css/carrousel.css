@@ -1,0 +1,85 @@
+ .carousel-container {
+    position: relative;
+    margin: 20px auto 30px;
+    width: 100%;
+}
+
+ .slides img{
+    object-fit: cover;
+    object-position: top;
+}
+
+ .dots {
+    width: 100%;
+    text-align: center;
+    margin-top: 11px;
+}
+
+ .carousel-container .prev, .home-inicio .carousel-container .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    padding: 7px;
+    color: var(--bordes);
+    font-weight: bold;
+    transition: 0.6s ease;
+    user-select: none;
+    background-color: rgba(255,255,255,0.8);
+}
+
+ .carousel-container .next {
+    right: 0;
+    border-radius: 8px 0 0 8px;
+}
+ .carousel-container .prev {
+    left: 0;
+    text-align: left;
+    border-radius: 0 6px 6px 0;
+}
+
+.dot {
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    margin: 0 2px;
+    background-color: var(--fondo-claro);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot-active, .dot:hover {
+    background-color: var(--bordes);
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+    height: 200px;
+    width: 100%;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+@media screen and (min-width: 768px) {
+
+    .carousel-container .fade{
+    height: 400px;
+}
+}
+
+@media screen and (min-width: 1024px) {
+    .carousel-container {
+        margin: 20px auto 50px;
+        position: relative;
+    }
+}

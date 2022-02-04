@@ -1,0 +1,59 @@
+
+/* DARK MODE */
+input.validationsErrors.dark,
+textarea.validationsErrors.dark,
+label.validationsErrors.dark,
+select.validationsErrors.dark
+{background-color: gray !important;box-shadow: inset 0 0 10px red, inset 0 0 21px black;color: white;letter-spacing: 3px;}
+input.validationsSuccess.dark,
+textarea.validationsSuccess.dark,
+label.validationsSuccess.dark,
+select.validationsSuccess.dark
+{
+    background-color: gray !important;
+    box-shadow: inset 0 0 9px 1px green, inset 0 0 18px black;
+    color: white;
+    letter-spacing: 2px;
+}
+.error.validationsErrors.dark{
+    font-weight: bold;
+    background: transparent;
+    text-shadow: 0 10px 5px black, 9px 9px 18px black;
+}
+/* DARK MODE END */
+
+input.validationsErrors,
+textarea.validationsErrors,
+label.validationsErrors,
+select.validationsErrors
+{box-shadow: inset 0 0 5px 1px rgb(243,171,171),0 0 2px red;/* background-color: white !important; */letter-spacing: 2px;} 
+
+.error{
+    color: red;
+    align-self: flex-start;
+    background-color: whitesmoke;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    letter-spacing: 3px;
+    text-align: center;
+    height: 0px;
+    font-size: 0rem;
+    transition: .5s all ease;
+}
+.error.validationsErrors{
+    font-size: 1rem;
+    height: fit-content;
+    transition: .5s all ease;
+}
+
+
+
+input.validationsSuccess,
+textarea.validationsSuccess,
+label.validationsSuccess,
+select.validationsSuccess
+{
+    box-shadow: inset 0 0 5px 1px rgb(191, 233, 191),0 0 2px green;
+    letter-spacing: 2px;
+}
